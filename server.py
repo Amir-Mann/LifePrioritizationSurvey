@@ -12,6 +12,7 @@ ALLOWED_PAGES = [
     "HTMLs/statistics.html"
 ] + [os.path.join("HTMLs/images", f) for f in os.listdir("HTMLs/images") if os.path.isfile(os.path.join("HTMLs/images", f))]
 
+ALLOWED_PAGES = ALLOWED_PAGES + ["/" + page for page in ALLOWED_PAGES]
 class EthicalHTTPRequestHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
@@ -25,7 +26,7 @@ class EthicalHTTPRequestHandler(SimpleHTTPRequestHandler):
         if self.path in ALLOWED_PAGES:
             return super().do_GET()
         else:
-            print("illlgal request to {self.path}")
+            print(f"illeagal request to {self.path}")
 
     def do_POST(self):
         # Irelevent example code
