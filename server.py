@@ -10,7 +10,7 @@ ALLOWED_PAGES = [
     "HTMLs/dry_survay.html",
     "HTMLs/interactive_story.html",
     "HTMLs/statistics.html"
-] + [os.path.join("HTMLs/images", f) for f in os.listdir("HTMLs/images") if os.path.isfile(os.path.join("HTMLs/images", f))]
+] + ["HTMLs/images" + "/" + f for f in os.listdir("HTMLs/images") if os.path.isfile(os.path.join("HTMLs/images", f))]
 
 ALLOWED_PAGES = ALLOWED_PAGES + ["/" + page for page in ALLOWED_PAGES]
 class EthicalHTTPRequestHandler(SimpleHTTPRequestHandler):
@@ -26,6 +26,21 @@ class EthicalHTTPRequestHandler(SimpleHTTPRequestHandler):
             return super().do_GET()
         else:
             print(f"OURLOG: illeagal request to {self.path}")
+
+    def do_GET_dry_survay(self):
+        self.path = 'HTMLs/dry_survay.html'
+        print(f"OURLOG: Change path to {self.path}")
+        return super().do_GET()
+
+    def do_GET_interactive_story(self):
+        self.path = 'HTMLs/interactive_story.html'
+        print(f"OURLOG: Change path to {self.path}")
+        return super().do_GET()
+    
+    def do_GET_statistics(self):
+        self.path = 'HTMLs/statistics.html'
+        print(f"OURLOG: Change path to {self.path}")
+        return super().do_GET()
 
     def do_POST(self):
         # Irelevent example code
