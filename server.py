@@ -16,17 +16,16 @@ ALLOWED_PAGES = ALLOWED_PAGES + ["/" + page for page in ALLOWED_PAGES]
 class EthicalHTTPRequestHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
-        print(f"Handling request for {self.path}")
+        print(f"OURLOG: Handling request for {self.path}")
         
         if self.path == '/':
             self.path = 'HTMLs/dry_survay.html'
-        
-        print(f"Handling request for {self.path}")
+            print(f"OURLOG: Change path to {self.path}")
         
         if self.path in ALLOWED_PAGES:
             return super().do_GET()
         else:
-            print(f"illeagal request to {self.path}")
+            print(f"OURLOG: illeagal request to {self.path}")
 
     def do_POST(self):
         # Irelevent example code
