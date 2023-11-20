@@ -1,3 +1,4 @@
-id,age_survay,age_game,gender_survay,gender_game,ethnicity_survay,ethnicity_game,religion_survay,religion_game,job_survay,job_game,family_situation_survay,family_situation_game,health_conditions_survay,health_conditions_game,name_situation_survay,name_situation_game
-123,1,1,0,1,0,0,0,1,0,1,0,1,1,1,0,1
-124,1,1,1,1,0,0,0,0,0,0,0,1,1,1,1,1
+IP,ID,Name (Survay),Occupation (Survay),Age (Survay),Gender (Survay),Ethnicity (Survay),Criminal Record (Survay),Medical Record (Survay),Family Situation (Survay),Name (Story),Occupation (Story),Age (Story),Gender (Story),Ethnicity (Story),Criminal Record (Story),Medical Record (Story),Family Situation (Story),A,B,C,D,E,F,G
+127.0.0.1,123,0,1,1,1,1,0,1,0,0,1,0,1,0,1,1,1,1,1,1,0,0,0,0
+127.0.0.1,124,1,1,0,1,0,1,1,1,0,1,1,1,0,1,1,1,0,0,0,1,1,1,0
+127.0.0.1,125,0,0,1,1,0,1,1,0,0,0,1,1,0,1,1,0,1,0,1,0,1,0,0
