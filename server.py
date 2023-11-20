@@ -63,12 +63,14 @@ class EthicalHTTPRequestHandler(SimpleHTTPRequestHandler):
         super().__init__(*args, **kwargs)
     
     def do_GET(self):
-        print(f"OURLOG: Handling request for {self.path}")
+        original_path = self.path
+        print(f"OURLOG: Handling request for '{self.path}'")
 
         # Parse GET parameters
         if "?" in self.path:
             i = self.path.index("?") + 1
             params = dict([tuple(p.split("=")) for p in self.path[i:].split("&")])
+            self.path = self.path[:i - 1]
         else:
             params = []
 
@@ -85,24 +87,22 @@ class EthicalHTTPRequestHandler(SimpleHTTPRequestHandler):
         elif self.path in ALLOWED_PAGES_FOR_DIRECT_ACCESS:
             return super().do_GET()
         else:
-            print(f"OURLOG: illegal request to {self.path}")
+            extra_info =  f" (was reformated as '{self.path}')" if self.path != original_path else ""
+            print(f"OURLOG: illegal request to '{original_path}'{extra_info} was blocked. If you think this a mistake talk to Amir")
 
     # Handle GET request for dry survey page
     def do_GET_dry_survay(self, params):
         self.path = 'HTMLs/dry_survay.html'
-        print(f"OURLOG: dry_survay: Change path to {self.path}")
         return super().do_GET()
 
     # Handle GET request for interactive story page
     def do_GET_interactive_story(self, params):
         self.path = 'HTMLs/interactive_story.html'
-        print(f"OURLOG: interactive_story: Change path to {self.path}")
         return super().do_GET()
 
     # Handle GET request for statistics page
     def do_GET_statistics(self, params):
         self.path = 'HTMLs/statistics.html'
-        print(f"OURLOG: statistics: Change path to {self.path}")
         return super().do_GET()
 
     def do_POST(self):
