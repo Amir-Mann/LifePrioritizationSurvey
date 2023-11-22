@@ -1,3 +1,4 @@
+import script.js
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,40 +16,91 @@ body, html {height: 100%}
   background-position: center;
   background-size: cover;
 }
+
 </style>
 </head>
+<script src="dynamicBars.js" defer></script>
 <body>
-
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
   <div class="w3-display-topleft w3-padding-large w3-xlarge" style="text-shadow: 2px 2px #000000">
-    Life Priority Survay
+    Life Priority Survey
   </div>
+
   <div class="w3-display-topmiddle">
-    <h1 class="w3-large w3-center" style="text-shadow: 1px 1px #000000">Survay results: You're choice compared to others</h1>
+    <h1 class="w3-large w3-center" style="text-shadow: 1px 1px #000000">Survey results: You're choice compared to others</h1>
+
+    <body>
+      <script>
+        window.onload = () => {
+          var reader = new FileReader();
+    
+          // CSV file in the root folder
+          const csvFilePath = '/entries.csv';
+          fetch(csvFilePath)
+            .then(response => response.text())
+            .then(csv => {
+
+              // Process CSV content
+              let rows = csv.split('\n');
+              let columns = [];
+              let columnNames = rows[0].split(','); // Get column names from the first row
+              
+              for (let i = 1; i < rows.length; i++) { // Start from index 1 to skip labels
+                let cells = rows[i].split(',');
+                for (let j = 0; j < cells.length; j++) {
+                  if (!columns[j]) {
+                    columns[j] = [];
+                  }
+                  columns[j].push(parseInt(cells[j])); // Assuming 1 or 0 values
+                }
+              }
+    
+              // Calculate averages
+              let averages = [];
+              for (let i = 0; i < columns.length; i++) {
+                let sum = columns[i].reduce((a, b) => a + b, 0);
+                let average = sum / columns[i].length;
+                averages.push(average);
+              }
+
+              // Display averages with column names in console
+              columnNames.forEach((columnName, index) => {
+                console.log(`${columnName}: ${averages[index].toFixed(2)}`);
+              });
+              updateRectangles('slider01', 'Learn the names', averages[2], 400);
+              updateRectangles('slider02', 'Learn the Ethnicity', averages[3], 400);
+              })
+              .catch(error => console.log('Error fetching the CSV file:', error));
+
+              
+        }
+      </script>
+      
+    </body>
+    
     <hr class="w3-border-grey" style="margin:auto;width:40%">
     <svg id="slider01" style="display:inline;" width="631.5" height="150">
-        <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
-        <rect width="100" height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-        <rect width="300" height="20" x="220" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
-        <text text-anchor="middle" x="220" y="60" class="results-pip-label">25% of others</text>
-        <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
-        <text text-anchor="middle" x="60" y="80">I want to know</text>
-        <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
+      <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" x="220" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" x="220" y="60" class="results-pip-label">25% of others</text>
+      <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
+      <text text-anchor="middle" x="60" y="80">I want to know</text>
+      <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
     </svg>
-    <svg id="slider01" style="display:inline;" width="631.5" height="150">
-        <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the Ethnicity</text>
-        <rect width="250" height="20" x="120" y="65" style="fill:rgb(58, 173, 58);;stroke-width:3;stroke:rgb(0,0,0)"></rect>
-        <rect width="150" height="20" x="370" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
-        <text text-anchor="middle" x="370" y="60" class="results-pip-label">62.5% of others</text>
-        <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
-        <text text-anchor="middle" x="60" y="80">I want to know</text>
-        <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
+    <svg id="slider02" style="display:inline;" width="631.5" height="150">
+      <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the Ethnicity</text>
+      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);;stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" x="370" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" x="370" y="60" class="results-pip-label">62.5% of others</text>
+      <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
+      <text text-anchor="middle" x="60" y="80">I want to know</text>
+      <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
     </svg>
-  </div>
-  <div class="w3-display-bottomleft w3-padding-large" style="text-shadow: 1px 1px #000000">
-    KAIST CS489 project <a href="https://github.com/Amir-Mann/LifePrioritizationSurvey" target="_blank">github</a>
-  </div>
-</div>
 
+    <div class="w3-display-bottomleft w3-padding-large" style="text-shadow: 1px 1px #000000">
+      KAIST CS489 project <a href="https://github.com/Amir-Mann/LifePrioritizationSurvey" target="_blank">github</a>
+    </div>
+</div>
 </body>
 </html>
