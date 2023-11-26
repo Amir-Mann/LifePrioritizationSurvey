@@ -1,0 +1,5 @@
+# for filled dry survay
+http://localhost:8000/interactive_story?Name=0&Occupation=0&Age=1&Gender=1&Ethnicity=0&Criminal Record=1&Medical Record=1&Family Situation=0
+
+# for filled interactive story. Notice the ID field, its need to be changed to the users new_id
+http://localhost:8000/statistics?ID=125&Name=0&Occupation=0&Age=1&Gender=1&Ethnicity=0&Criminal Record=1&Medical Record=1&Family Situation=0&A=1&B=0&C=1&D=0&E=1&F=0&G=0
