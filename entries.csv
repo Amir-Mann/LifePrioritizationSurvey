@@ -1,4 +1,4 @@
-IP,ID,Name (Survay),Occupation (Survay),Age (Survay),Gender (Survay),Ethnicity (Survay),Criminal Record (Survay),Medical Record (Survay),Family Situation (Survay),Name (Story),Occupation (Story),Age (Story),Gender (Story),Ethnicity (Story),Criminal Record (Story),Medical Record (Story),Family Situation (Story),A,B,C,D,E,F,G
+IP,ID,Name (Survey),Occupation (Survey),Age (Survey),Gender (Survey),Ethnicity (Survey),Criminal Record (Survey),Medical Record (Survey),Family Situation (Survey),Name (Story),Occupation (Story),Age (Story),Gender (Story),Ethnicity (Story),Criminal Record (Story),Medical Record (Story),Family Situation (Story),A,B,C,D,E,F,G
 127.0.0.1,123,0,1,1,1,1,0,1,0,0,1,0,1,0,1,1,1,1,1,1,0,0,0,0
 127.0.0.1,124,1,1,0,1,0,1,1,1,0,1,1,1,0,1,1,1,0,0,0,1,1,1,0
 127.0.0.1,125,0,0,1,1,0,1,1,0,0,0,1,1,0,1,1,0,1,0,1,0,1,0,0

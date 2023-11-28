@@ -1,0 +1,85 @@
+{
+    "people": [
+        {
+            "Name": "Hassan",
+            "Occupation": "Doctor",
+            "Age": "Fifty-Five",
+            "Gender": "Male",
+            "Ethnicity": "Arab",
+            "Criminal Record": "Assault",
+            "Medical Record": "None"
+        },
+        {
+            "Name": "Sofia",
+            "Occupation": "Soldier",
+            "Age": "Thirty-Two",
+            "Gender": "Female",
+            "Ethnicity": "Caucasian",
+            "Criminal Record": "Drug Use",
+            "Medical Record": "None"
+        },
+        {
+            "Name": "Aiden",
+            "Occupation": "Student",
+            "Age": "Sixteen",
+            "Gender": "Non-Binary",
+            "Ethnicity": "Irish",
+            "Criminal Record": "None",
+            "Medical Record": "Diabetic"
+        },
+        {
+            "Name": "Kim",
+            "Occupation": "Student",
+            "Age": "Eleven",
+            "Gender": "Female",
+            "Ethnicity": "American",
+            "Criminal Record": "None",
+            "Medical Record": "Cancer"
+        },
+        {
+            "Name": "Yuki",
+            "Occupation": "Homeless",
+            "Age": "Fourty-Four",
+            "Gender": "Male",
+            "Ethnicity": "Japanese",
+            "Criminal Record": "None",
+            "Medical Record": "None"
+        },
+        {
+            "Name": "Kai",
+            "Occupation": "Retired",
+            "Age": "Seventy-One",
+            "Gender": "Male",
+            "Ethnicity": "Chinese",
+            "Criminal Record": "None",
+            "Medical Record": "None"
+        },
+        {
+            "Name": "Aisha",
+            "Occupation": "No Work",
+            "Age": "Twenty-Five",
+            "Gender": "Female",
+            "Ethnicity": "South African",
+            "Criminal Record": "Drunk Driving",
+            "Medical Record": "None"
+        },
+        {
+            "Name": "Nikolai",
+            "Occupation": "Business Man",
+            "Age": "Twenty-Five",
+            "Gender": "Male",
+            "Ethnicity": "Russian",
+            "Criminal Record": "None",
+            "Medical Record": "None"
+        },
+        {
+            "Name": "Leila",
+            "Occupation": "CEO",
+            "Age": "Sixty-One",
+            "Gender": "Female",
+            "Ethnicity": "Persian",
+            "Criminal Record": "White Collar Crime",
+            "Medical Record": "None"
+        }
+    ]
+}
