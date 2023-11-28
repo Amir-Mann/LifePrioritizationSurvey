@@ -161,6 +161,32 @@
     </div>
 
     <script>
+         // Function to initialize the button state
+        const buttonState = {
+            ID: 126, Name: 0, Occupation: 0, Age: 0, Gender: 0, Ethnicity: 0, Criminal_Record: 0, Medical_Record: 0, Family_Situation: 0,
+            P1: 0, P2: 0, P3: 0, P4: 0, P5: 0, P6: 0, P7: 0, P8: 0, P9: 0
+        };
+
+        function submitAndRedirect() {
+            // Check right-side buttons and update buttonState
+            document.querySelectorAll('.right-buttons button').forEach((button, index) => {
+                const characteristic = ['Name', 'Occupation', 'Age', 'Gender', 'Ethnicity', 'Criminal_Record', 'Medical_Record', 'Family_Situation'][index];
+                buttonState[characteristic] = button.classList.contains('light-red-button') ? 1 : 0;
+            });
+
+            // Check left-side buttons for the 'light-blue-button' class and update buttonState
+            document.querySelectorAll('.left-buttons button').forEach((button, index) => {
+                buttonState[`P${index + 1}`] = button.classList.contains('light-blue-button') ? 1 : 0;
+            });
+
+            // Construct the query parameters
+            const queryParams = new URLSearchParams(buttonState);
+
+            // Redirect to the statistics page with parameters
+            window.location.href = `/statistics?${queryParams}`;
+        }
+
+
         function buttonClick(side, buttonNumber) {
             if (side === 'left') {
                 // Update the heading on the bottom
@@ -197,9 +223,8 @@
 
                 const lightBlueButtons = document.querySelectorAll('.light-blue-button');
                 if (lightBlueButtons.length >= 4) {
-                    // Show a pop-up or take any other action
-                    alert('You have selected four peope to save! Game Over.');
-                    
+                    // Submit game results and redirect
+                    submitAndRedirect();
                 }
 
             } else if (side === 'right') {

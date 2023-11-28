@@ -33,7 +33,7 @@ FIELD_NAMES = [
     "Name", "Occupation", "Age", "Gender", "Ethnicity", "Criminal Record", "Medical Record", "Family Situation"
 ]
 PERSONALS_TO_SAVE = [
-    "A", "B", "C", "D", "E", "F", "G"
+    f"P{i}" for i in range(1, 10)
 ]
 DATABASE_FIELDS = ["IP", "ID"] + [field + " (Survey)" for field in FIELD_NAMES] + [field + " (Story)" for field in FIELD_NAMES] + PERSONALS_TO_SAVE
 
@@ -85,7 +85,6 @@ class Database(object):
         
         self.not_inserted[new_id] = {field + " (Survey)" : val for field, val in params.items()}
         self.not_inserted[new_id]["ID"] = str(new_id)
-        print(new_id)
         
         return new_id
     
