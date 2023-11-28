@@ -14,7 +14,7 @@ SIMPLE_REDIRACTION_PATHS = {
 # Mapping of pages names to possible variation of paths that might mean them
 PAGES_NAMES = {
     "dry_survay": ["", "HTMLs/dry_survay.html", "dry_survay.html", "dry_survay"],
-    "interactive_story": ["HTMLs/interactive_story.html", "interactive_story.html", "interactive_story"],
+    "interactive_story": ["HTMLs/interactive_story.html", "interactive_story.html", "interactive_story", "HTMLs/data.json"],
     "statistics": ["HTMLs/statistics.html", "statistics.html", "statistics"]
 }
 
