@@ -179,11 +179,19 @@ class EthicalHTTPRequestHandler(SimpleHTTPRequestHandler):
         if not new_id:
             return self.do_GET_invalid_page("Denied ileagal 'dry survey' submition.")
         
-        # Here should be the code for getting the interactive story.
-        # It should use the new_id somehow and send back with the parameter ID={new_id} in when clicking the submit button
-        # Right now its just returns the interactive story example HTML
-        self.path = 'HTMLs/interactive_story.html'
-        return super().do_GET()
+         # Read the HTML file
+        with open('HTMLs/interactive_story.html', 'r') as file:
+            html_content = file.read()
+
+        # Replace a placeholder in the HTML with new_id
+        # Make sure you have a placeholder like {{ID}} in your HTML where you want the new_id to be inserted
+        html_content = html_content.replace("'{{ID}}'", str(new_id))
+
+        # Send the modified HTML content to the client
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        self.wfile.write(html_content.encode())
 
     # Handle GET request for statistics page
     def do_GET_statistics(self, params):
