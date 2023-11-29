@@ -228,20 +228,21 @@
                 }
 
             } else if (side === 'right') {
-                const clickedButton = document.querySelector(`.right-buttons button:nth-child(${buttonNumber+1})`);
+                const clickedButton = document.querySelector(`.right-buttons button:nth-child(${buttonNumber + 1})`);
+                const characteristic = [
+                    "Name", "Occupation", "Age", "Gender", "Ethnicity", "Criminal Record", "Medical Record", "Family Situation"
+                ][buttonNumber - 1];
 
                 if (clickedButton) {
-                    // Change the color of the clicked button to light blue
-                    clickedButton.classList.add('light-red-button');
+                    // Toggle the color of the clicked button
+                    clickedButton.classList.toggle('light-red-button');
+                    updateLeftButtons(characteristic, clickedButton.classList.contains('light-red-button'));
                 }
-
-                const characteristics = [
-                    "Name", "Occupation", "Age", "Gender", "Ethnicity", "Criminal Record", "Medical Record"
-                ];
-                const selectedCharacteristic = characteristics[buttonNumber - 1];
-                const categories = [];
-
-                fetch("images/data.json")
+            }
+        }
+        
+        function updateLeftButtons(characteristic, addData) {
+            fetch("images/data.json")
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Network response was not ok: ${response.status}`);
@@ -249,24 +250,23 @@
                     return response.json();
                 })
                 .then(jsonData => {
-                    jsonData.people.forEach(person => {
-                        const category = person[characteristics[buttonNumber - 1]]; // Change this to the desired property
-                        if (!categories[category]) {
-                            categories[category] = [];
-                        }
-                        categories.push(category);
-                    });
-
                     const leftButtonsContainer = document.querySelector('.left-button-container');
-                    // Update the text content of existing buttons based on new data
                     const existingButtons = leftButtonsContainer.querySelectorAll('button');
+        
                     existingButtons.forEach((button, index) => {
-                        button.textContent = `P${index+1}: ${categories[index]}`;
+                        const personData = jsonData.people[index];
+                        const dataPiece = `${personData[characteristic]}`;
+        
+                        if (addData) {
+                            // Append new data
+                            button.textContent += `, ${dataPiece}`;
+                        } else {
+                            // Remove the data if it's already there
+                            button.textContent = button.textContent.replace(`, ${dataPiece}`, '');
+                        }
                     });
                 })
                 .catch(error => console.error('Error fetching JSON data:', error));
-
-            }
         }
     </script>
     
