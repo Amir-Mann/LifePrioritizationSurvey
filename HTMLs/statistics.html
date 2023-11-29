@@ -2,19 +2,23 @@
 <html>
 <head>
 <script>
-  function updateRectangles(svgId, labelText, averageValue, maxValue) {
-    console.log("hej");
-
+  function updateRectangles(svgId, labelText, averageValue, maxValue, yourChoice) {
     const svg = document.getElementById(svgId);
     const percentage = (averageValue * 100).toFixed(2);
     const barWidth = averageValue * maxValue;
     const inverseWidth = maxValue - barWidth;
-    console.log("Width= " + barWidth);
+    console.log("Width= " + yourChoice);
     
-    svg.querySelector('.results-pip-label').textContent = `${labelText}: ${percentage}: ${labelText}%`;
+    svg.querySelector('.results-pip-label').textContent = `${labelText}: ${percentage}%`;
     svg.querySelector('rect:nth-child(2)').setAttribute('width', barWidth);
     svg.querySelector('rect:nth-child(3)').setAttribute('width', inverseWidth);
     svg.querySelector('rect:nth-child(3)').setAttribute('x', barWidth + 120);
+
+    if (yourChoice == 1) {
+      svg.querySelector('.choice').setAttribute('x', '60');
+    } else {
+      svg.querySelector('.choice').setAttribute('x', '571.5');
+    }
     // Adjust the x attribute for the second rectangle based on the barWidth and additional spacing
   }
 </script>
@@ -28,7 +32,7 @@ body,h1 {font-family: "Raleway", sans-serif}
 body, html {height: 100%}
 .bgimg {
   background-image: url('/HTMLs/images/statistics_background.jpeg');
-  min-height: 170%;
+  min-height: 270%;
   background-position: center;
   background-size: cover;
 }
@@ -45,77 +49,133 @@ body, html {height: 100%}
     <h1 class="w3-large w3-center" style="text-shadow: 1px 1px #000000">Survey results: Your choice compared to others</h1>
     
     <hr class="w3-border-grey" style="margin:auto;width:40%">
-    <svg id="slider01" style="display:inline;" width="631.5" height="150">
-      <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+    <svg id="slider01" style="display:inline;" width="631.5" height="100">
+      <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
-      <text text-anchor="middle" x="220" y="60" class="results2-pip-label">25% of others</text>
-      <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
+      <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
     </svg>
-    <svg id="slider02" style="display:inline;" width="631.5" height="150">
-      <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the occupation</text>
-      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);;stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" x="370" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
-      <text text-anchor="middle" x="370" y="60" class="results-pip-label">62.5% of others</text>
-      <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
+    <svg id="slider09" style="display:inline;" width="631.5" height="150">
+      <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
+      <text text-anchor="middle" x="60" y="40">I want to know</text>
+      <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
+    </svg>
+    <svg id="slider02" style="display:inline;" width="631.5" height="100">
+      <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
     </svg>
-    <svg id="slider03" style="display:inline;" width="631.5" height="150">
-      <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the Age</text>
-      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);;stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" x="370" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
-      <text text-anchor="middle" x="370" y="60" class="results-pip-label">62.5% of others</text>
-      <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
+    <svg id="slider10" style="display:inline;" width="631.5" height="150">
+      <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
+      <text text-anchor="middle" x="60" y="40">I want to know</text>
+      <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
+    </svg>
+    <svg id="slider03" style="display:inline;" width="631.5" height="100">
+      <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
     </svg>
-    <svg id="slider04" style="display:inline;" width="631.5" height="150">
-      <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the Gender</text>
-      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);;stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" x="370" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
-      <text text-anchor="middle" x="370" y="60" class="results-pip-label">62.5% of others</text>
-      <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
+    <svg id="slider11" style="display:inline;" width="631.5" height="150">
+      <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
+      <text text-anchor="middle" x="60" y="40">I want to know</text>
+      <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
+    </svg>
+    <svg id="slider04" style="display:inline;" width="631.5" height="100">
+      <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
     </svg>
-    <svg id="slider05" style="display:inline;" width="631.5" height="150">
-      <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the Ethnicity</text>
-      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);;stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" x="370" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
-      <text text-anchor="middle" x="370" y="60" class="results-pip-label">62.5% of others</text>
-      <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
+    <svg id="slider12" style="display:inline;" width="631.5" height="150">
+      <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
+      <text text-anchor="middle" x="60" y="40">I want to know</text>
+      <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
+    </svg>
+    <svg id="slider05" style="display:inline;" width="631.5" height="100">
+      <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
     </svg>
-    <svg id="slider06" style="display:inline;" width="631.5" height="150">
-      <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the Criminal records</text>
-      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);;stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" x="370" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
-      <text text-anchor="middle" x="370" y="60" class="results-pip-label">62.5% of others</text>
-      <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
+    <svg id="slider13" style="display:inline;" width="631.5" height="150">
+      <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
+      <text text-anchor="middle" x="60" y="40">I want to know</text>
+      <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
+    </svg>
+    <svg id="slider06" style="display:inline;" width="631.5" height="100">
+      <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
     </svg>
-    <svg id="slider07" style="display:inline;" width="631.5" height="150">
-      <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the Medical record</text>
-      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);;stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" x="370" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
-      <text text-anchor="middle" x="370" y="60" class="results-pip-label">62.5% of others</text>
-      <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
+    <svg id="slider14" style="display:inline;" width="631.5" height="150">
+      <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
+      <text text-anchor="middle" x="60" y="40">I want to know</text>
+      <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
+    </svg>
+    <svg id="slider07" style="display:inline;" width="631.5" height="100">
+      <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
     </svg>
-    <svg id="slider08" style="display:inline;" width="631.5" height="150">
-      <text text-anchor="middle" x="320" y="30" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the Family situation</text>
-      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);;stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" x="370" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
-      <text text-anchor="middle" x="370" y="60" class="results-pip-label">62.5% of others</text>
-      <text text-anchor="middle" x="571.5" y="95" fill="white">Your Choice</text>
+    <svg id="slider15" style="display:inline;" width="631.5" height="150">
+      <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
+      <text text-anchor="middle" x="60" y="40">I want to know</text>
+      <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
+    </svg>
+    <svg id="slider08" style="display:inline;" width="631.5" height="100">
+      <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
+    </svg>
+    <svg id="slider16" style="display:inline;" width="631.5" height="150">
+      <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
+      <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
+      <text text-anchor="middle" x="60" y="40">I want to know</text>
+      <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
     </svg>
 
     <div class="w3-display-bottomleft w3-padding-large" style="text-shadow: 1px 1px #000000">
@@ -130,17 +190,12 @@ body, html {height: 100%}
         .then(response => response.text())
         .then(csv => {
         // Process CSV content
-        console.log(csv); // Check if CSV content is retrieved correctly
-
         let rows = csv.split('\n');
         let columns = [];
         let columnNames = rows[0].split(','); // Get column names from the first row
 
-        console.log(columnNames); // Check if column names are retrieved correctly
-
         for (let i = 1; i < rows.length; i++) { // Start from index 1 to skip labels
           let cells = rows[i].split(',');
-          console.log(cells); // Check individual cell values
           for (let j = 0; j < cells.length; j++) {
             if (!columns[j]) {
               columns[j] = [];
@@ -149,8 +204,12 @@ body, html {height: 100%}
           }
         }
 
-  // Calculate averages
-  console.log(columns); // Check the columns array
+        // Access the last row
+      const lastRow = rows[rows.length - 1].split(',');
+      for (let i = 2; i < rows.length; i++) { // Start from index 2 to skip unecessary info
+          let cells = rows[i].split(',');
+          console.log('CELLS', cells); // Check individual cell values
+        }
           // Calculate averages
           let averages = [];
           for (let i = 0; i < columns.length; i++) {
@@ -159,27 +218,37 @@ body, html {height: 100%}
             averages.push(average);
           }
 
-          // Display averages with column names in console
-          columnNames.forEach((columnName, index) => {
-           // console.log(`${columnName}: ${averages[index].toFixed(2)}`);
-          });
-          console.log("asGGGdf");
-          // Wait for the document to load completely before accessing the SVG elements
-          updateRectangles('slider01', 'Learn the names', averages[2], 400);
-          updateRectangles('slider02', 'Learn the occupation', averages[3], 400);
-          updateRectangles('slider03', 'Learn the age', averages[4], 400);
-          updateRectangles('slider04', 'Learn the gender', averages[5], 400);
-          updateRectangles('slider05', 'Learn the ethnicity', averages[6], 400);
-          updateRectangles('slider06', 'Learn the criminal record', averages[7], 400);
-          updateRectangles('slider07', 'Learn the medical record', averages[8], 400);
-          console.log("hejE");
-          updateRectangles('slider08', 'Learn the family situation', averages[9], 400);
+          // Update dynamic things
+          updateRectangles('slider01', 'Survey - Learn the names', averages[2], 400, lastRow[2]);
+          updateRectangles('slider09', 'Game - Learn the names', averages[10], 400, lastRow[10]);
+
+          updateRectangles('slider02', 'Survey - Learn the occupation', averages[3], 400, lastRow[3]);
+          updateRectangles('slider10', 'Game - Learn the occupation', averages[11], 400, lastRow[11]);
+
+          updateRectangles('slider03', 'Survey - Learn the age', averages[4], 400, lastRow[4]);
+          updateRectangles('slider11', 'Game - Learn the age', averages[12], 400, lastRow[12]);
+
+          updateRectangles('slider04', 'Survey - Learn the gender', averages[5], 400, lastRow[5]);
+          updateRectangles('slider12', 'Game - Learn the gender', averages[13], 400, lastRow[13]);
+
+          updateRectangles('slider05', 'Survey - Learn the ethnicity', averages[6], 400, lastRow[6]);
+          updateRectangles('slider13', 'Game - Learn the ethnicity', averages[14], 400, lastRow[14]);
+
+          updateRectangles('slider06', 'Survey - Learn the criminal record', averages[7], 400, lastRow[7]);
+          updateRectangles('slider14', 'Game - Learn the criminal record', averages[15], 400, lastRow[15]);
+
+
+          updateRectangles('slider07', 'Survey - Learn the medical record', averages[8], 400, lastRow[8]);
+          updateRectangles('slider15', 'Game - Learn the medical record', averages[16], 400, lastRow[16]);
+
+          updateRectangles('slider08', 'Survey - Learn the family situation', averages[9], 400, lastRow[9]);
+          updateRectangles('slider16', 'Game - Learn the family situation', averages[17], 400, lastRow[17]);
+
           // Add other update functions here
         })
         .catch(error => console.log('Error fetching the CSV file:', error));
     };
     </script>
 </div>
-<script src="dynamicBars.js" defer></script>
 </body>
 </html>
