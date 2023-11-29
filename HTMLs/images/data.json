@@ -3,83 +3,92 @@
         {
             "Name": "Hassan",
             "Occupation": "Doctor",
-            "Age": "Fifty-Five",
+            "Age": "55",
             "Gender": "Male",
             "Ethnicity": "Arab",
             "Criminal Record": "Assault",
-            "Medical Record": "None"
+            "Medical Record": "Healthy",
+            "Family Situation": "Married"
         },
         {
             "Name": "Sofia",
             "Occupation": "Soldier",
-            "Age": "Thirty-Two",
+            "Age": "32",
             "Gender": "Female",
             "Ethnicity": "Caucasian",
             "Criminal Record": "Drug Use",
-            "Medical Record": "None"
+            "Medical Record": "Healthy",
+            "Family Situation": "Engaged"
         },
         {
             "Name": "Aiden",
             "Occupation": "Student",
-            "Age": "Sixteen",
+            "Age": "16",
             "Gender": "Non-Binary",
             "Ethnicity": "Irish",
-            "Criminal Record": "None",
-            "Medical Record": "Diabetic"
+            "Criminal Record": "Law-Abiding",
+            "Medical Record": "Diabetic",
+            "Family Situation": "Only child"
         },
         {
             "Name": "Kim",
             "Occupation": "Student",
-            "Age": "Eleven",
+            "Age": "11",
             "Gender": "Female",
             "Ethnicity": "American",
-            "Criminal Record": "None",
-            "Medical Record": "Cancer"
+            "Criminal Record": "Law-Abiding",
+            "Medical Record": "Cancer",
+            "Family Situation": "Big family"
         },
         {
             "Name": "Yuki",
             "Occupation": "Homeless",
-            "Age": "Fourty-Four",
+            "Age": "24",
             "Gender": "Male",
             "Ethnicity": "Japanese",
-            "Criminal Record": "None",
-            "Medical Record": "None"
+            "Criminal Record": "Law-Abiding",
+            "Medical Record": "Healthy",
+            "Family Situation": "2 Children"
         },
         {
             "Name": "Kai",
             "Occupation": "Retired",
-            "Age": "Seventy-One",
+            "Age": "21",
             "Gender": "Male",
             "Ethnicity": "Chinese",
-            "Criminal Record": "None",
-            "Medical Record": "None"
-        },
-        {
-            "Name": "Aisha",
-            "Occupation": "No Work",
-            "Age": "Twenty-Five",
-            "Gender": "Female",
-            "Ethnicity": "South African",
-            "Criminal Record": "Drunk Driving",
-            "Medical Record": "None"
+            "Criminal Record": "Law-Abiding",
+            "Medical Record": "Healthy",
+            "Family Situation": "Caring for sick wife"
         },
         {
             "Name": "Nikolai",
             "Occupation": "Business Man",
-            "Age": "Twenty-Five",
+            "Age": "26",
             "Gender": "Male",
             "Ethnicity": "Russian",
-            "Criminal Record": "None",
-            "Medical Record": "None"
+            "Criminal Record": "Law-Abiding",
+            "Medical Record": "Healthy",
+            "Family Situation": "Single"
+        },
+        {
+            "Name": "Aisha",
+            "Occupation": "No Work",
+            "Age": "25",
+            "Gender": "Female",
+            "Ethnicity": "South African",
+            "Criminal Record": "Drunk Driving",
+            "Medical Record": "Healthy",
+            "Family Situation": "Single mother of one"
         },
         {
             "Name": "Leila",
             "Occupation": "CEO",
-            "Age": "Sixty-One",
+            "Age": "61",
             "Gender": "Female",
             "Ethnicity": "Persian",
             "Criminal Record": "White Collar Crime",
-            "Medical Record": "None"
+            "Medical Record": "Healthy",
+            "Family Situation": "Single"
         }
     ]
 }
