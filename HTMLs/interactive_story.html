@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Image with Buttons</title>
+    <title>Life Prioritization</title>
     
     <style>
         body {
@@ -33,18 +33,28 @@
             position: absolute;
             display: flex;
             flex-direction: column;
-            width: 20%;
+            width: 23%;
+        }
+        .left-button-container {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            width: 23%;
         }
 
         .bottom-button-container {
             position: absolute;
             display: flex;
             flex-direction: column;
-            width: 30%;
+            width: 45%;
         }
 
         .left-buttons {
             left: 0;
+        }
+
+        .right-buttons {
+            right: 0;
         }
 
         .right-text {
@@ -91,6 +101,14 @@
         .val {
             display: none;
         }
+
+        .light-blue-button {
+            background-color: lightblue;
+        }
+
+        .light-red-button {
+            background-color: lightcoral;
+        }
         
     </style>
 </head>
@@ -100,9 +118,9 @@
             <h1>Life Prioritization</h1>
         </div>
 
-        <div class="button-container left-buttons">
+        <div class="left-button-container left-buttons">
             <!-- Left Buttons -->
-            <h2>View Profiles</h2>
+            <h2>Click to Prompt Save</h2>
             <button onclick="buttonClick('left', 1)">Person 1</button>
             <button onclick="buttonClick('left', 2)">Person 2</button>
             <button onclick="buttonClick('left', 3)">Person 3</button>
@@ -123,10 +141,17 @@
             <button onclick="buttonClick('bottom', 2)">No</button>
         </div>
 
-        <div class="right-text">
-            <!-- Information Text -->
-            <h2>Information: </h2>
-            <p>Blah blah blah</p>
+        <div class="button-container right-buttons">
+            <!-- Left Buttons -->
+            <h2>Select the following characteristic you would like to view:</h2>
+            <button onclick="buttonClick('right', 1)">Name</button>
+            <button onclick="buttonClick('right', 2)">Occupation</button>
+            <button onclick="buttonClick('right', 3)">Age</button>
+            <button onclick="buttonClick('right', 4)">Gender</button>
+            <button onclick="buttonClick('right', 5)">Ethnicity</button>
+            <button onclick="buttonClick('right', 6)">Criminal Record</button>
+            <button onclick="buttonClick('right', 7)">Medical Record</button>
+            <button onclick="buttonClick('right', 8)">Family Situation</button>
         </div>
 
         <div class="val">
@@ -136,14 +161,40 @@
     </div>
 
     <script>
+         // Function to initialize the button state
+        const buttonState = {
+            ID: '{{ID}}', Name: 0, Occupation: 0, Age: 0, Gender: 0, Ethnicity: 0, Criminal_Record: 0, Medical_Record: 0, Family_Situation: 0,
+            P1: 0, P2: 0, P3: 0, P4: 0, P5: 0, P6: 0, P7: 0, P8: 0, P9: 0
+        };
+
+        function submitAndRedirect() {
+            // Check right-side buttons and update buttonState
+            document.querySelectorAll('.right-buttons button').forEach((button, index) => {
+                const characteristic = ['Name', 'Occupation', 'Age', 'Gender', 'Ethnicity', 'Criminal_Record', 'Medical_Record', 'Family_Situation'][index];
+                buttonState[characteristic] = button.classList.contains('light-red-button') ? 1 : 0;
+            });
+
+            // Check left-side buttons for the 'light-blue-button' class and update buttonState
+            document.querySelectorAll('.left-buttons button').forEach((button, index) => {
+                buttonState[`P${index + 1}`] = button.classList.contains('light-blue-button') ? 1 : 0;
+            });
+
+            // Construct the query parameters
+            const queryParams = new URLSearchParams(buttonState);
+
+            // Redirect to the statistics page with parameters
+            window.location.href = `/statistics?${queryParams}`;
+        }
+
+
         function buttonClick(side, buttonNumber) {
             if (side === 'left') {
                 // Update the heading on the bottom
                 const bottomHeading = document.querySelector('.bottom-buttons h2');
-                bottomHeading.textContent = `Do you want to save Person ${buttonNumber}?`;
+                bottomHeading.textContent = `Do you want to save the life of Person ${buttonNumber}?`;
 
                 // Placeholder variable
-                const val = document.querySelector('.val p');
+                const val = document.querySelector('.val');
                 val.textContent = `${buttonNumber}`;
 
                 // Reveal the bottom buttons
@@ -159,12 +210,62 @@
                 mainImage.src = `images/MainStoryP${buttonNumber}.jpg`;
             } else if (side === 'bottom') {
                 // Handle bottom button clicks if needed
-                console.log(`Button ${buttonNumber} clicked.`);
+                const valDiv = document.querySelector('.val');
+                const valText = valDiv.textContent;
+                const intValue = parseInt(valText, 10);
+
                 // Remove the clicked button
-                const clickedButton = document.querySelector(`.left-buttons button:nth-child(${val})`);
-                if (clickedButton) {
-                    clickedButton.remove();
+                const clickedButton = document.querySelector(`.left-buttons button:nth-child(${intValue+1})`);
+                if (clickedButton && buttonNumber == 1) {
+                    // Change the color of the clicked button to light blue
+                    clickedButton.classList.add('light-blue-button');
                 }
+
+                const lightBlueButtons = document.querySelectorAll('.light-blue-button');
+                if (lightBlueButtons.length >= 4) {
+                    // Submit game results and redirect
+                    submitAndRedirect();
+                }
+
+            } else if (side === 'right') {
+                const clickedButton = document.querySelector(`.right-buttons button:nth-child(${buttonNumber+1})`);
+
+                if (clickedButton) {
+                    // Change the color of the clicked button to light blue
+                    clickedButton.classList.add('light-red-button');
+                }
+
+                const characteristics = [
+                    "Name", "Occupation", "Age", "Gender", "Ethnicity", "Criminal Record", "Medical Record"
+                ];
+                const selectedCharacteristic = characteristics[buttonNumber - 1];
+                const categories = [];
+
+                fetch("images/data.json")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(jsonData => {
+                    jsonData.people.forEach(person => {
+                        const category = person[characteristics[buttonNumber - 1]]; // Change this to the desired property
+                        if (!categories[category]) {
+                            categories[category] = [];
+                        }
+                        categories.push(category);
+                    });
+
+                    const leftButtonsContainer = document.querySelector('.left-button-container');
+                    // Update the text content of existing buttons based on new data
+                    const existingButtons = leftButtonsContainer.querySelectorAll('button');
+                    existingButtons.forEach((button, index) => {
+                        button.textContent = `P${index+1}: ${categories[index]}`;
+                    });
+                })
+                .catch(error => console.error('Error fetching JSON data:', error));
+
             }
         }
     </script>

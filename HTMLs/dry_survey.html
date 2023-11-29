@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>
+        Life Prioritization Survey
+    </title>
+ 
+    <style>
+ 
+        /* Styling the Body element i.e. Color, 
+        Font, Alignment */ 
+        body {
+            background-color: #5a80b6;
+            font-family: Verdana;
+            text-align: center;
+        }
+ 
+        /* Styling the Form (Color, Padding, Shadow) */
+        #explanation {
+            background-color: #bfd1ea;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px 15px;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Styling the Form (Color, Padding, Shadow) */
+        form {
+            background-color: #fff;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px 20px;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+ 
+        /* Styling form-control Class */
+        .form-control {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+ 
+        /* Styling form-control Label */ 
+        .form-control label {
+            display: block;
+            margin-bottom: 10px;
+        }
+ 
+        /* Styling form-control input, 
+        select, textarea */
+        .form-control input,
+        .form-control select,
+        .form-control textarea {
+            border: 1px solid #777;
+            border-radius: 2px;
+            font-family: inherit;
+            padding: 10px;
+            display: block;
+            width: 95%;
+        }
+ 
+        /* Styling form-control Radio 
+        button and Checkbox */
+        .form-control input[type="radio"],
+        .form-control input[type="checkbox"] {
+            display: inline-block;
+            width: auto;
+        }
+ 
+        /* Styling Button */
+        button {
+            background-color: #05c46b;
+            border: 1px solid #777;
+            border-radius: 2px;
+            font-family: inherit;
+            font-size: 21px;
+            display: block;
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+  
+<body>
+    <h1>Life Prioritization Survey</h1>
+    <div class="header-logo"><img src='HTMLs/images/LifePrioratizationSymbol.png' alt="Life Priority Survey" width="110" class="header-logo-right" /></div>
+  
+    <!-- Explanation Box -->
+    <div id="explanation">
+        <h3>
+            This survey explores the information you deem important for prioritizing individuals in life-saving scenarios. 
+            Please respond according to your personal ethical beliefs and moral compass.
+        </h3>
+    </div>
+    
+    <!-- Create Form -->
+    <form id="form">
+ 
+        <!-- Details -->
+        <div class="form-control">
+            <label>
+                I think individual names are important when choosing who to prioritize
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="names-agree">
+                <input type="radio"
+                       id="names-agree"
+                       name="names">Agree</input>
+            </label>
+            <label for="names-disagree">
+                <input type="radio"
+                       id="names-disagree"
+                       name="names">Disagree</input>
+            </label>
+        </div>
+
+        <!-- Details -->
+        <div class="form-control">
+            <label>
+                I think occupation is important when choosing who to prioritize
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="occupation-agree">
+                <input type="radio"
+                       id="occupation-agree"
+                       name="occupation">Agree</input>
+            </label>
+            <label for="occupation-disagree">
+                <input type="radio"
+                       id="occupation-disagree"
+                       name="occupation">Disagree</input>
+            </label>
+        </div>
+
+        <!-- Details -->
+        <div class="form-control">
+            <label>
+                I think age is important when choosing who to prioritize
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="age-agree">
+                <input type="radio"
+                       id="age-agree"
+                       name="age">Agree</input>
+            </label>
+            <label for="age-disagree">
+                <input type="radio"
+                       id="age-disagree"
+                       name="age">Disagree</input>
+            </label>
+        </div>
+        <!-- Details -->
+        <div class="form-control">
+            <label>
+                I think gender is important when choosing who to prioritize
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="gender-agree">
+                <input type="radio"
+                       id="gender-agree"
+                       name="gender">Agree</input>
+            </label>
+            <label for="gender-disagree">
+                <input type="radio"
+                       id="gender-disagree"
+                       name="gender">Disagree</input>
+            </label>
+        </div>
+
+        <!-- Details -->
+        <div class="form-control">
+            <label>
+                I think ethnicity is important when choosing who to prioritize
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="ethnicity-agree">
+                <input type="radio"
+                       id="ethnicity-agree"
+                       name="ethnicity">Agree</input>
+            </label>
+            <label for="ethnicity-disagree">
+                <input type="radio"
+                       id="ethnicity-disagree"
+                       name="ethnicity">Disagree</input>
+            </label>
+        </div>
+
+        <!-- Details -->
+        <div class="form-control">
+            <label>
+                I think criminal record is important when choosing who to prioritize
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="criminal record-agree">
+                <input type="radio"
+                       id="criminal record-agree"
+                       name="criminal record">Agree</input>
+            </label>
+            <label for="criminal record-disagree">
+                <input type="radio"
+                       id="criminal record-disagree"
+                       name="criminal record">Disagree</input>
+            </label>
+        </div>
+
+        <!-- Details -->
+        <div class="form-control">
+            <label>
+                I think medical record is important when choosing who to prioritize
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="medical record-agree">
+                <input type="radio"
+                       id="medical record-agree"
+                       name="medical record">Agree</input>
+            </label>
+            <label for="medical record-disagree">
+                <input type="radio"
+                       id="medical record-disagree"
+                       name="medical record">Disagree</input>
+            </label>
+        </div>
+
+        <!-- Details -->
+        <div class="form-control">
+            <label>
+                I think family situation is important when choosing who to prioritize
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="family situation-agree">
+                <input type="radio"
+                       id="family situation-agree"
+                       name="family situation">Agree</input>
+            </label>
+            <label for="family situation-disagree">
+                <input type="radio"
+                       id="family situation-disagree"
+                       name="family situation">Disagree</input>
+            </label>
+        </div>
+
+        <!-- Multi-line Text Input Control -->
+        <button type="button" id="submitBtn">Submit</button>
+    </form>
+    
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Function to get the value of a radio group
+            function getRadioValue(name) {
+                var radios = document.getElementsByName(name);
+                for (var radio of radios) {
+                    if (radio.checked) {
+                        return radio.value === 'Agree' ? '1' : '0';
+                    }
+                }
+                return null; // if none are checked, return null
+            }
+    
+            // Check if all groups have a selected value
+            var fields = ['names', 'occupation', 'age', 'gender', 'ethnicity', 'criminal record', 'medical record', 'family situation'];
+            var allFilled = fields.every(function(field) {
+                return getRadioValue(field) !== null;
+            });
+    
+            if (!allFilled) {
+                alert('Please answer all questions.');
+            } else {
+                // Construct URL with query parameters
+                var queryParams = new URLSearchParams({
+                    Name: getRadioValue('names'),
+                    Occupation: getRadioValue('occupation'),
+                    Age: getRadioValue('age'),
+                    Gender: getRadioValue('gender'),
+                    Ethnicity: getRadioValue('ethnicity'),
+                    Criminal_Record: getRadioValue('criminal record'),
+                    Medical_Record: getRadioValue('medical record'),
+                    Family_Situation: getRadioValue('family situation')
+                });
+    
+                // Redirect to the new URL
+                window.location.href = "interactive_story?" + queryParams.toString();
+            }
+        });
+    </script>
+</body>
+</html>

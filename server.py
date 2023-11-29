@@ -8,12 +8,13 @@ ALLOWED_PAGES_FOR_DIRECT_ACCESS = ["HTMLs/images" + "/" + f for f in os.listdir(
 
 # Mapping of pages names to possible variation of paths that might mean them
 PAGES_NAMES = {
-    "dry_survay": ["", "HTMLs/dry_survay.html", "dry_survay.html", "dry_survay"],
+    "dry_survey": ["", "HTMLs/dry_survey.html", "dry_survey.html", "dry_survey"],
     "interactive_story": ["HTMLs/interactive_story.html", "interactive_story.html", "interactive_story"],
     "statistics": ["HTMLs/statistics.html", "statistics.html", "statistics"]
 }
 
 # Add paths with leading slashes
+ALLOWED_PAGES_FOR_DIRECT_ACCESS += ["entries.csv"]
 ALLOWED_PAGES_FOR_DIRECT_ACCESS = ALLOWED_PAGES_FOR_DIRECT_ACCESS + ["/" + page for page in ALLOWED_PAGES_FOR_DIRECT_ACCESS]
 for key, values in PAGES_NAMES.items():
     for v in values[:]:
@@ -33,9 +34,9 @@ FIELD_NAMES = [
     "Name", "Occupation", "Age", "Gender", "Ethnicity", "Criminal Record", "Medical Record", "Family Situation"
 ]
 PERSONALS_TO_SAVE = [
-    "A", "B", "C", "D", "E", "F", "G"
+    f"P{i}" for i in range(1, 10)
 ]
-DATABASE_FIELDS = ["IP", "ID"] + [field + " (Survay)" for field in FIELD_NAMES] + [field + " (Story)" for field in FIELD_NAMES] + PERSONALS_TO_SAVE
+DATABASE_FIELDS = ["IP", "ID"] + [field + " (Survey)" for field in FIELD_NAMES] + [field + " (Story)" for field in FIELD_NAMES] + PERSONALS_TO_SAVE
 
 
 class Database(object):
@@ -67,25 +68,24 @@ class Database(object):
         
         print("OURLOG: Loaded database.")
     
-    def register_dry_survay_submition(self, params):
+    def register_dry_survey_submition(self, params):
         for field in FIELD_NAMES:
             if field not in params:
-                print(f"OURLOG: Dry survay submition is missing field '{field}'")
+                print(f"OURLOG: Dry survey submition is missing field '{field}'")
                 return None
             if params[field] not in ("0", "1"):
-                print(f"OURLOG: Dry survay submition field '{field}' is not 0 or 1 but {params[field]}")
+                print(f"OURLOG: Dry survey submition field '{field}' is not 0 or 1 but {params[field]}")
                 return None
         expected_fields_count = len(FIELD_NAMES)
         if len(params.keys()) != expected_fields_count:
-            print(f"OURLOG: Dry survay submition with {len(params.keys())} values instead of {expected_fields_count}")
+            print(f"OURLOG: Dry survey submition with {len(params.keys())} values instead of {expected_fields_count}")
             return None
         
         new_id = self.next_available_id
         self.next_available_id += 1
         
-        self.not_inserted[new_id] = {field + " (Survay)" : val for field, val in params.items()}
+        self.not_inserted[new_id] = {field + " (Survey)" : val for field, val in params.items()}
         self.not_inserted[new_id]["ID"] = str(new_id)
-        print(new_id)
         
         return new_id
     
@@ -108,7 +108,7 @@ class Database(object):
         
         new_id = int(params["ID"])
         if new_id not in self.not_inserted:
-            print(f"OURLOG: Interactive story submition has ID which is not registered as having filled the survay or that has finished the website entirly.")
+            print(f"OURLOG: Interactive story submition has ID which is not registered as having filled the survey or that has finished the website entirly.")
             return None
         
         choices = self.not_inserted[new_id]
@@ -148,14 +148,14 @@ class EthicalHTTPRequestHandler(SimpleHTTPRequestHandler):
         # Parse GET parameters
         if "?" in self.path:
             i = self.path.index("?") + 1
-            params = dict([tuple(p.split("=")) for p in self.path[i:].replace("%20", " ").split("&")])
+            params = dict([tuple(p.split("=")) for p in self.path[i:].replace("%20", " ").replace("_", " ").split("&")])
             self.path = self.path[:i - 1]
         else:
             params = []
 
         # Route to appropriate page / function handler based on path
-        if self.path in PAGES_NAMES["dry_survay"]:
-            return self.do_GET_dry_survay(params)
+        if self.path in PAGES_NAMES["dry_survey"]:
+            return self.do_GET_dry_survey(params)
         elif self.path in PAGES_NAMES["interactive_story"]:
             return self.do_GET_interactive_story(params)
         elif self.path in PAGES_NAMES["statistics"]:
@@ -169,28 +169,37 @@ class EthicalHTTPRequestHandler(SimpleHTTPRequestHandler):
             self.do_GET_invalid_page()
 
     # Handle GET request for dry survey page
-    def do_GET_dry_survay(self, params):
-        self.path = 'HTMLs/dry_survay.html'
+    def do_GET_dry_survey(self, params):
+        self.path = 'HTMLs/dry_survey.html'
         return super().do_GET()
 
     # Handle GET request for interactive story page
     def do_GET_interactive_story(self, params):
         
-        new_id = self.db.register_dry_survay_submition(params)
+        new_id = self.db.register_dry_survey_submition(params)
         if not new_id:
-            return self.do_GET_invalid_page("Denied ileagal 'dry survay' submition.")
+            return self.do_GET_invalid_page("Denied ileagal 'dry survey' submition.")
         
-        # Here should be the code for getting the interactive story.
-        # It should use the new_id somehow and send back with the parameter ID={new_id} in when clicking the submit button
-        # Right now its just returns the interactive story example HTML
-        self.path = 'HTMLs/interactive_story.html'
-        return super().do_GET()
+         # Read the HTML file
+        with open('HTMLs/interactive_story.html', 'r') as file:
+            html_content = file.read()
+
+        # Replace a placeholder in the HTML with new_id
+        # Make sure you have a placeholder like {{ID}} in your HTML where you want the new_id to be inserted
+        html_content = html_content.replace("'{{ID}}'", str(new_id))
+
+        # Send the modified HTML content to the client
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        self.wfile.write(html_content.encode())
 
     # Handle GET request for statistics page
     def do_GET_statistics(self, params):
-        choises = self.db.register_interactive_story_submition(params, self.client_address[0])
-        if not choises:
-            return self.do_GET_invalid_page("Denied ileagal 'interactive story' submition.")
+        if not "SKIP" in params:
+            choises = self.db.register_interactive_story_submition(params, self.client_address[0])
+            if not choises:
+                return self.do_GET_invalid_page("Denied ileagal 'interactive story' submition.")
         
         # Here should be the code for dynamicly creating the statistics html based on self.db.averages and choises
         # Right now its just returns the statistics example HTML
