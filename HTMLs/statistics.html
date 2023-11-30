@@ -16,8 +16,11 @@
 
     if (yourChoice == 1) {
       svg.querySelector('.choice').setAttribute('x', '60');
+      svg.querySelector('rect:nth-child(2)').setAttribute('style', 'fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(255,255,255)');
+      svg.querySelector('rect:nth-child(2)').parentNode.appendChild(svg.querySelector('rect:nth-child(2)'));
     } else {
       svg.querySelector('.choice').setAttribute('x', '571.5');
+      svg.querySelector('rect:nth-child(3)').setAttribute('style', 'fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)');
     }
     // Adjust the x attribute for the second rectangle based on the barWidth and additional spacing
   }
@@ -29,12 +32,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
 body,h1 {font-family: "Raleway", sans-serif}
-body, html {height: 100%}
+body, html {height: 121%}
 .bgimg {
   background-image: url('/HTMLs/images/statistics_background.jpeg');
   min-height: 270%;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 </style>
@@ -52,7 +56,7 @@ body, html {height: 100%}
     <svg id="slider01" style="display:inline;" width="631.5" height="100">
       <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
@@ -60,7 +64,7 @@ body, html {height: 100%}
     <svg id="slider09" style="display:inline;" width="631.5" height="150">
       <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="40">I want to know</text>
       <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
@@ -68,7 +72,7 @@ body, html {height: 100%}
     <svg id="slider02" style="display:inline;" width="631.5" height="100">
       <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
@@ -76,7 +80,7 @@ body, html {height: 100%}
     <svg id="slider10" style="display:inline;" width="631.5" height="150">
       <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="40">I want to know</text>
       <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
@@ -84,7 +88,7 @@ body, html {height: 100%}
     <svg id="slider03" style="display:inline;" width="631.5" height="100">
       <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
@@ -92,7 +96,7 @@ body, html {height: 100%}
     <svg id="slider11" style="display:inline;" width="631.5" height="150">
       <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="40">I want to know</text>
       <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
@@ -100,7 +104,7 @@ body, html {height: 100%}
     <svg id="slider04" style="display:inline;" width="631.5" height="100">
       <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
@@ -108,7 +112,7 @@ body, html {height: 100%}
     <svg id="slider12" style="display:inline;" width="631.5" height="150">
       <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="40">I want to know</text>
       <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
@@ -116,7 +120,7 @@ body, html {height: 100%}
     <svg id="slider05" style="display:inline;" width="631.5" height="100">
       <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
@@ -124,7 +128,7 @@ body, html {height: 100%}
     <svg id="slider13" style="display:inline;" width="631.5" height="150">
       <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="40">I want to know</text>
       <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
@@ -132,7 +136,7 @@ body, html {height: 100%}
     <svg id="slider06" style="display:inline;" width="631.5" height="100">
       <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
@@ -140,7 +144,7 @@ body, html {height: 100%}
     <svg id="slider14" style="display:inline;" width="631.5" height="150">
       <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="40">I want to know</text>
       <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
@@ -148,7 +152,7 @@ body, html {height: 100%}
     <svg id="slider07" style="display:inline;" width="631.5" height="100">
       <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
@@ -156,7 +160,7 @@ body, html {height: 100%}
     <svg id="slider15" style="display:inline;" width="631.5" height="150">
       <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="40">I want to know</text>
       <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>
@@ -164,7 +168,7 @@ body, html {height: 100%}
     <svg id="slider08" style="display:inline;" width="631.5" height="100">
       <text text-anchor="middle" x="320" y="50" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="65" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="65" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="95" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="80">I want to know</text>
       <text text-anchor="middle" x="571.5" y="80">Don't tell me</text>
@@ -172,7 +176,7 @@ body, html {height: 100%}
     <svg id="slider16" style="display:inline;" width="631.5" height="150">
       <text text-anchor="middle" x="320" y="70" class="results-pip-label" font-weight="bold" fill="white" style="text-shadow: 1px 1px #000000">Learn the names</text>
       <rect height="20" x="120" y="25" style="fill:rgb(58, 173, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
-      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(255,255,255)"></rect>
+      <rect height="20" y="25" style="fill:rgb(173, 58, 58);stroke-width:3;stroke:rgb(0,0,0)"></rect>
       <text text-anchor="middle" class ="choice" y="55" fill="white">Your Choice</text>
       <text text-anchor="middle" x="60" y="40">I want to know</text>
       <text text-anchor="middle" x="571.5" y="40">Don't tell me</text>

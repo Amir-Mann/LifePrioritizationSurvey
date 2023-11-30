@@ -111,12 +111,14 @@
             <label for="names-agree">
                 <input type="radio"
                        id="names-agree"
-                       name="names">Agree</input>
+                       name="names"
+                       value="1">Agree</input>
             </label>
             <label for="names-disagree">
                 <input type="radio"
                        id="names-disagree"
-                       name="names">Disagree</input>
+                       name="names"
+                       value="0">Disagree</input>
             </label>
         </div>
 
@@ -130,12 +132,14 @@
             <label for="occupation-agree">
                 <input type="radio"
                        id="occupation-agree"
-                       name="occupation">Agree</input>
+                       name="occupation"
+                       value="1">Agree</input>
             </label>
             <label for="occupation-disagree">
                 <input type="radio"
                        id="occupation-disagree"
-                       name="occupation">Disagree</input>
+                       name="occupation"
+                       value="0">Disagree</input>
             </label>
         </div>
 
@@ -149,12 +153,14 @@
             <label for="age-agree">
                 <input type="radio"
                        id="age-agree"
-                       name="age">Agree</input>
+                       name="age"
+                       value="1">Agree</input>
             </label>
             <label for="age-disagree">
                 <input type="radio"
                        id="age-disagree"
-                       name="age">Disagree</input>
+                       name="age"
+                       value="0">Disagree</input>
             </label>
         </div>
         <!-- Details -->
@@ -167,12 +173,14 @@
             <label for="gender-agree">
                 <input type="radio"
                        id="gender-agree"
-                       name="gender">Agree</input>
+                       name="gender"
+                       value="1">Agree</input>
             </label>
             <label for="gender-disagree">
                 <input type="radio"
                        id="gender-disagree"
-                       name="gender">Disagree</input>
+                       name="gender"
+                       value="0">Disagree</input>
             </label>
         </div>
 
@@ -186,12 +194,14 @@
             <label for="ethnicity-agree">
                 <input type="radio"
                        id="ethnicity-agree"
-                       name="ethnicity">Agree</input>
+                       name="ethnicity"
+                       value="1">Agree</input>
             </label>
             <label for="ethnicity-disagree">
                 <input type="radio"
                        id="ethnicity-disagree"
-                       name="ethnicity">Disagree</input>
+                       name="ethnicity"
+                       value="0">Disagree</input>
             </label>
         </div>
 
@@ -205,12 +215,14 @@
             <label for="criminal record-agree">
                 <input type="radio"
                        id="criminal record-agree"
-                       name="criminal record">Agree</input>
+                       name="criminal record"
+                       value="1">Agree</input>
             </label>
             <label for="criminal record-disagree">
                 <input type="radio"
                        id="criminal record-disagree"
-                       name="criminal record">Disagree</input>
+                       name="criminal record"
+                       value="0">Disagree</input>
             </label>
         </div>
 
@@ -224,12 +236,14 @@
             <label for="medical record-agree">
                 <input type="radio"
                        id="medical record-agree"
-                       name="medical record">Agree</input>
+                       name="medical record"
+                       value="1">Agree</input>
             </label>
             <label for="medical record-disagree">
                 <input type="radio"
                        id="medical record-disagree"
-                       name="medical record">Disagree</input>
+                       name="medical record"
+                       value="0">Disagree</input>
             </label>
         </div>
 
@@ -243,12 +257,14 @@
             <label for="family situation-agree">
                 <input type="radio"
                        id="family situation-agree"
-                       name="family situation">Agree</input>
+                       name="family situation"
+                       value="1">Agree</input>
             </label>
             <label for="family situation-disagree">
                 <input type="radio"
                        id="family situation-disagree"
-                       name="family situation">Disagree</input>
+                       name="family situation"
+                       value="0">Disagree</input>
             </label>
         </div>
 
@@ -263,7 +279,7 @@
                 var radios = document.getElementsByName(name);
                 for (var radio of radios) {
                     if (radio.checked) {
-                        return radio.value === 'Agree' ? '1' : '0';
+                        return radio.value;
                     }
                 }
                 return null; // if none are checked, return null
