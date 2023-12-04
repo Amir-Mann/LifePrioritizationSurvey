@@ -120,7 +120,7 @@
 
         <div class="left-button-container left-buttons">
             <!-- Left Buttons -->
-            <h2>Click to Prompt Save</h2>
+            <h2>Click to Prompt Save, Save Up to 4 People</h2>
             <button onclick="buttonClick('left', 1)">Person 1</button>
             <button onclick="buttonClick('left', 2)">Person 2</button>
             <button onclick="buttonClick('left', 3)">Person 3</button>
@@ -138,7 +138,6 @@
             <!-- Bottom Yes/No Buttons -->
             <h2></h2>
             <button onclick="buttonClick('bottom', 1)">Yes</button>
-            <button onclick="buttonClick('bottom', 2)">No</button>
         </div>
 
         <div class="button-container right-buttons">
@@ -229,6 +228,15 @@
 
             } else if (side === 'right') {
                 const clickedButton = document.querySelector(`.right-buttons button:nth-child(${buttonNumber + 1})`);
+
+                const isRed = clickedButton.classList.contains('light-red-button');
+
+                 // Check if the button is already red; if so, do nothing
+                if (isRed) {
+                    return;
+                }
+
+
                 const characteristic = [
                     "Name", "Occupation", "Age", "Gender", "Ethnicity", "Criminal Record", "Medical Record", "Family Situation"
                 ][buttonNumber - 1];
