@@ -230,6 +230,6 @@ class EthicalHTTPRequestHandler(SimpleHTTPRequestHandler):
 if __name__ == "__main__":
     db = Database()
     handler_cls = partial(EthicalHTTPRequestHandler, db)
-    httpd = HTTPServer(('localhost', 8000), handler_cls)
+    httpd = HTTPServer(('', 18080), handler_cls)
     print("OURLOG: serving...\n")
     httpd.serve_forever()
