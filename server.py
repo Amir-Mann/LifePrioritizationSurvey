@@ -94,6 +94,14 @@ class Database(object):
             print(f"OURLOG: Interactive story submition is missing field 'ID'")
             return None
         
+        if not params["ID"].isdigit():
+            print(f"OURLOG: Interactive story field 'ID' is not an integer")
+            return None
+
+        if len(params["ID"]) > 10:
+            print(f"OURLOG: Interactive story field 'ID' is too long (more than 10 chars)")
+            return None
+        
         for field in FIELD_NAMES + PERSONALS_TO_SAVE:
             if field not in params:
                 print(f"OURLOG: Interactive story submition is missing field '{field}'")
